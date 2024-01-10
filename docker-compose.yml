@@ -47,13 +47,15 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
   gerenciador:
-    image: gacacio/gerenciador:1
+    image: gacacio/gerenciador:latest
     ports:
       - "8080:8080"
     environment:
       PORT: 6379
-      HOST: localhost
+      HOST: redis
       POSTGRES: jdbc:postgresql://postgres:5432/gestao
+      USERNAME: postgres
+      PASSWORD: 1234567
     networks:
       - banco-dados
     depends_on:
